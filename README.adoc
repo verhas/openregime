@@ -1,5 +1,7 @@
 = Open Documents
 
+:version:1.0.0-SNAPSHOT
+
 This repository contains documents that can be used freely and openly in software development
 projects. These documents can be like
 
