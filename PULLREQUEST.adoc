@@ -1,0 +1,27 @@
+= Guidelines to Create Pull Request
+:version:1.0.0-SNAPSHOT
+
+== Introduction and Document Scope
+Pull requests are modification requests in software development when a developer creates a unit of
+change in the source code and requests that the modifications get incorporated into the "master"
+source code and thus become part of the project.
+
+The process handling pull requests is multi step workflow with several parties participating.
+During the process the parties communicate, discuss different opinions, point out problems in
+the code. Practice shows that this process leads many times interpersonal problems and human
+conflicts.
+
+This document gives technical and non-technical guidelines to follow in order to avoid human
+conflicts and optimize the process aiming the highest possible efficiency.
+
+=== Process Actors
+
+There are at least two actors in the pull request process. One actor asking the pull and the
+other one merging the change to the "master" source. There can be a third actor commenting the
+pull request. This third actor is not necessarily a separate person, the actor accepting the
+pull request may and usually does also act as commenting actor.
+
+== Pull Request Guidelines
+
+
+
