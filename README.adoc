@@ -1,0 +1,54 @@
+= Open Documents
+
+This repository contains documents that can be used freely and openly in software development
+projects. These documents can be like
+
+* formatting guides
+* pull request guidelines and others.
+
+== License
+
+The license of the documents are and have to be CC BY 4.0 as defined in
+
+https://creativecommons.org/licenses/by/4.0/
+
+== Format of the Documents
+
+For shorter documents we can use Markdown. For longer documents the suggested format is Asciidoc. Asciidoc
+is usually preferred over Markdown.
+
+== Templating
+
+Some document may contain placeholders. In that case the suggested format is to use `{{` and `}}` separating
+the placeholder from normal text. For example a document may contain an organization name. Then the text
+will contaon `{{company}}`. When Acme corp. implements the document as their own they can easily replace the
+strings `{{company}}` with Acme corp.
+
+Later we may create a `pom.xml` to execute Jamal to automate that replacement process.
+
+== Language
+
+The language of the documents is English.
+
+== Existing Documents
+
+If there is a contemporary and continuously maintained document on the net with the same or similar
+license about a certain topic, then there is no reason to duplicate the work. In such case we may
+have a document that describes the available other resources with recommendations.
+
+For example the JPL Java coding standard is an outstanding document available at
+http://lars-lab.jpl.nasa.gov/jpl-java-standard.pdf and it should not be created again.
+
+== Participation and Governance
+
+As I start this project I do not imagine that as a one man show. I will try to create meaningful documents
+as a starting point but anyone is welcome to participate.
+
+You can and are encouraged to fork the repository, make corrections, additions and create a pull request.
+
+You can and are encouraged to create issues and comment issues.
+
+You can and are encouraged to comment on pull requests and issues.
+
+All communication and documentation work MUST follow the guidelines outlines in the document
+link:CODE_OF_CONDUCT.adoc[Code of Conduct].
