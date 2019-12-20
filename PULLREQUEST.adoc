@@ -66,6 +66,26 @@ which change is going to be reviewed first. That way neither `F1` nor `F2` block
 
 === Code Cleanup
 
+====
+Code Cleanup should be in a separate pull request.
+====
+
+When developing a new feature many times, it is tempting to modify code to improve the overall
+general structure of the code. Those changes should be limited. For example you may need to modify
+a method to implement a change and there is a `for` loop that you can alter to be the more modern
+for-each style or even to use Java 8 streams. In case the code inside the loop is modified for the
+change implementation then the modification of the loop can be part of the same change. It is a
+code cleanup of a code that is changed. If the for loop is not altered in any way and there is
+code change only before and/or after the loop then the change of the loop may not be a good decision.
+
+If there is a doubt to change the code in the same pull request then it is a safe choice not to
+include the change into the specific pull request.
+
+This recommendation does not mean that code cleanup should not be done. On the contrary. Code
+cleanup is important and it deserves it's own separate pull request.
+
 === Import Optimization
+
+
 
 === Formatting Change
