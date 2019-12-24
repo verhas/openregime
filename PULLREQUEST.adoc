@@ -38,6 +38,7 @@ pull request may and usually does also act as commenting actor.
 
 * PR - pull request
 * YAGNI - You Aren't Gonna Need it (https://martinfowler.com/bliki/Yagni.html)
+* IDE - Integrated Development Environment, like Eclipse, IntelliJ, NetBeans
 
 == Pull Request Guidelines
 
@@ -86,6 +87,38 @@ cleanup is important and it deserves it's own separate pull request.
 
 === Import Optimization
 
+====
+Import Optimization is code cleanup and thus should be in a separate pull request.
+====
 
+Import optimization is the act of one or more of the following actions:
+
+* removing import statements that are not needed any more
+* rearrange the order of import statements (including grouping)
+* change wild-card import statements into explicit import statements or
+  the other way around according to local policies.
+
+Import optimizations are usually performed automatically by the IDE when the code is formatted,
+saved. When the master code has different optimization rules (ordering, grouping) the import
+optimization creates extra differences in the PR that have no functional relevance.
+
+It may also happen many times that import statements in the checked in code are superfluous and
+not coherent with the local policies. It is advised to enforce the local development
+bylaws using static code analysis if possible to avoid such a situation.
+
+PRs must avoid import optimizations that are not related to the actual change.
+
+When a change eliminates the use of a class or method that was available through the use of
+an import statement then the removal of the import statement induced by that change should
+eventually be part of the PR.
+
+The opposite situation, when a change makes it necessary to import a class or method
+(static import) then the PR should  eventually contain the change of the `import` statements.
+The fact that the PR should contain the new `import` statement(s) is obvious: without the new
+statements the code in the PR does not compile.
+
+In other cases the optimization of the import statements should not be part of the PR, rather
+a separate PR should be created that contains nothing but import optimization and possibly
+other code cleanup.
 
 === Formatting Change
