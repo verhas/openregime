@@ -34,11 +34,15 @@ other one merging the change to the "master" source. There can be a third actor 
 pull request. This third actor is not necessarily a separate person, the actor accepting the
 pull request may and usually does also act as commenting actor.
 
-== Abbreviations
+== Abbreviations, sloppy terminology
 
 * PR - pull request
 * YAGNI - You Aren't Gonna Need it (https://martinfowler.com/bliki/Yagni.html)
 * IDE - Integrated Development Environment, like Eclipse, IntelliJ, NetBeans
+* master code - is the source code in the master branch. This is the code into which the PR code is
+  merged into
+* PR code - is the code that the developer created in its own branch and that is to be merged in
+  the pull request process
 
 == Pull Request Guidelines
 
@@ -117,8 +121,52 @@ The opposite situation, when a change makes it necessary to import a class or me
 The fact that the PR should contain the new `import` statement(s) is obvious: without the new
 statements the code in the PR does not compile.
 
+When the change in the code uses some method static imported then the new static import should
+eventually be part of the PR. If the code uses some previously statically imported methods, but
+the PR code uses the method with the full name, including the class name and it makes possible to
+delete the static import then this change should be part of the PR. The deletion of the static import
+statement is the consequence of the code change and that way this case is equivalent with the one
+when a class is not used any more and thus not imported any more.
+
 In other cases the optimization of the import statements should not be part of the PR, rather
 a separate PR should be created that contains nothing but import optimization and possibly
 other code cleanup.
 
 === Formatting Change
+
+====
+Formatting change is cleanup and thus should be in a separate pull request.
+====
+
+It is very easy to modify the formatting of the code. When the PR contains a lot of formatting
+change then the actual code change may easily be overseen in the numerous formatting change. This is
+something to avoid.
+
+If (1) the local formatting (very specifically the developers IDE formatting setting) is the same as the
+project setting and (2) the master code is well formatted then the PR request will not contains any
+reformatted line that is not new, deleted or changed. Formatting clutter in the PR is only possible
+when either there is a different setting in the developer IDE and/or the master code is not
+formatted properly.
+
+To avoid that situation (*formatting recommendations*)
+
+ * it is recommended to have well defined formatting rules defining the use of tab character
+   and space character for formatting
+ * placement of opening and closing braces,
+ * needed spaces between specific tokens (e.g. betweem `if(...)` and the `{` character)
+ * tool has to enforce the formatting and automatically signal the PR as build broken if the
+   formatting is not matching the rules,
+ * developers are provided with formatting configuration for the different IDEs that are
+   accepted and used for the development.
+
+If the local formatting is not the same as the project global formatting (1) and non-modified
+lines are reformatted then the developer creating the PR should undo these formattings for the PR.
+
+If the master code is not well formatted (2) and non-modified
+lines are reformatted then the developer creating the PR should undo these formattings for the PR AND
+should create a separate PR only to correct the formatting.
+
+When the formatting changes cause significant problem during the PR handlign it is recommended to
+introduce the formatting recommendations (itemized above), reformat the code of the whole project
+to be coherent with the formatting rules and merge this change into the master in one PR that contains
+no other change.
