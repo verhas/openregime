@@ -2,37 +2,37 @@
 :version:1.0.0-SNAPSHOT
 
 == Introduction and Document Scope
+
 Pull requests are modification requests in software development when a developer creates a unit of
 change in the source code and requests that the modifications get incorporated into the "master"
 source code and thus become part of the project.
 
-The aim of the pull request as a code review process is to provide extra quality assurance means
-to the software development ensuring that each and every change is reviewed at least by two persons.
+The aim of the pull request, as a code review process, is to provide extra quality assurance means
+to the software development, ensuring that each and every change is reviewed by at least two people.
 
-The process handling pull requests is multi step workflow with several parties participating.
-During the process the parties communicate, discuss different opinions, point out problems in
-the code. Practice shows that this process leads many times interpersonal problems and human
-conflicts.
+The process handling pull requests is a multi-step workflow with several parties participating.
+During the process the parties communicate, discuss different opinions and point out problems in
+the code. Practice shows that this process can lead to interpersonal problems and human conflicts.
 
 This document gives technical and non-technical guidelines to follow in order to avoid human
-conflicts and optimize the process aiming the highest possible efficiency.
+conflicts and optimize the process, aiming at the highest possible efficiency.
 
 === Notes
 
 These guidelines are mainly programming language agnostic. In case there is a guideline that is
-language specific then it is denoted in the section title between parentheses, e.g. (Java).
+language specific then it is denoted in the section title between parentheses, e.g.: (Java).
 
 The guidelines are independent of the tool that is used. However, the guidelines are expressed
 in a way that assume the use of git and GitHub. This is because most of the application of the
-guides will use this tool. Nevertheless the guides are general and can be adopted to other tools.
+guides will use this tool. Nevertheless the guides are general and can be adapted to other tools.
 Basic knowledge and understanding of git is assumed.
 
 === Process Actors
 
-There are at least two actors in the pull request process. One actor asking the pull and the
+There are at least two actors in the pull request process. One actor asking for the pull and the
 other one merging the change to the "master" source. There can be a third actor commenting the
 pull request. This third actor is not necessarily a separate person, the actor accepting the
-pull request may and usually does also act as commenting actor.
+pull request may (and usually does) also act as commenting actor.
 
 == Abbreviations, sloppy terminology
 
@@ -59,15 +59,15 @@ It may happen that two changes share some common code change parts. In that case
 two different approaches:
 
 . Order the changes and the first change contains the common part of the two changes. In this
-case the second change depends on the first one. It is to use in case the changes alone are
-not too big and creating a third PR would be a too big overhead. `F1` <- `F2`
+case the second change depends on the first one. Use this if the changes alone are
+not too big and creating a third PR would be too much overhead. `F1` <- `F2`
 
 . Create a change that contains only the common part that the other two changes depend on and the
 separate changes depend only on this common change. In that case we have the `C` common change and the
 two changes `C` <- `F1` && `C` <- `F2`, but the two changes `F1` and `F2` are independent of
-each other. It is to use in case the changes are not trivial and splitting them into smaller
-parts makes sense. It is also to use when the changes are complex and it cannot be foreseen
-which change is going to be reviewed first. That way neither `F1` nor `F2` blocks the other change.
+each other. Use this if the changes are not trivial and splitting them into smaller
+parts makes sense. Also when the changes are complex and it cannot be foreseen
+which change is going to be reviewed first. That way `F1` and `F2` do not block each other.
 
 === Code Cleanup
 
@@ -75,19 +75,21 @@ which change is going to be reviewed first. That way neither `F1` nor `F2` block
 Code Cleanup should be in a separate pull request.
 ====
 
-When developing a new feature many times, it is tempting to modify code to improve the overall
-general structure of the code. Those changes should be limited. For example you may need to modify
-a method to implement a change and there is a `for` loop that you can alter to be the more modern
-for-each style or even to use Java 8 streams. In case the code inside the loop is modified for the
-change implementation then the modification of the loop can be part of the same change. It is a
-code cleanup of a code that is changed. If the for loop is not altered in any way and there is
-code change only before and/or after the loop then the change of the loop may not be a good decision.
+When developing a new feature, it is sometimes tempting to modify code to improve the overall
+general structure of the code. These changes should be limited. 
 
-If there is a doubt to change the code in the same pull request then it is a safe choice not to
+For example: you may need to modify a method to implement a change and there is a `for` loop that 
+you can alter to be the more modern for-each style or even to use Java 8 streams. 
+If the code inside the loop has to be changed because it's needed for the implementation of the new feature, then the modification of 
+the loop can be part of the same change. This is code cleanup of code that changed. If the for 
+loop does not have to be altered in any way and there is code change only before and/or after the loop then the 
+change of the loop may not be a good decision.
+
+If there is any doubt about changing the code in the same pull request then it is a safe choice not to
 include the change into the specific pull request.
 
-This recommendation does not mean that code cleanup should not be done. On the contrary. Code
-cleanup is important and it deserves it's own separate pull request.
+This recommendation does not mean that code cleanup should not be done. On the contrary: Code
+cleanup is important and it deserves its own separate pull request.
 
 === Import Optimization
 
