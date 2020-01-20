@@ -46,7 +46,7 @@ pull request may and usually does also act as commenting actor.
 
 == Pull Request Guidelines
 
-=== Scope
+=== Scope of a Pull Request
 
 ====
 A single PR should focus on one single functional or non-functional change.
@@ -116,12 +116,12 @@ When a change eliminates the use of a class or method that was available through
 an import statement then the removal of the import statement induced by that change should
 eventually be part of the PR.
 
-The opposite situation, when a change makes it necessary to import a class or method
+(Java) The opposite situation, when a change makes it necessary to import a class or method
 (static import) then the PR should  eventually contain the change of the `import` statements.
 The fact that the PR should contain the new `import` statement(s) is obvious: without the new
 statements the code in the PR does not compile.
 
-When the change in the code uses some method static imported then the new static import should
+(Java) When the change in the code uses some method static imported then the new static import should
 eventually be part of the PR. If the code uses some previously statically imported methods, but
 the PR code uses the method with the full name, including the class name and it makes possible to
 delete the static import then this change should be part of the PR. The deletion of the static import

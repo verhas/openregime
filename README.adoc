@@ -22,10 +22,13 @@ is usually preferred over Markdown.
 
 Some document may contain placeholders. In that case the suggested format is to use `{{` and `}}` separating
 the placeholder from normal text. For example a document may contain an organization name. Then the text
-will contaon `{{company}}`. When Acme corp. implements the document as their own they can easily replace the
+will contain `{{company}}`. When Acme corp. implements the document as their own they can easily replace the
 strings `{{company}}` with Acme corp.
 
-Later we may create a `pom.xml` to execute Jamal to automate that replacement process.
+Later we may create a `pom.xml` to execute Jamal to automate that replacement process. The use of the `{{` and `}}`
+separated placeholders is not Jamal specific and there can be many other tools to be used for the resolution
+of the placeholders to the actual value. This is not a tool-lock-in. It just happens that Jamal was developed
+by the same developer who has started this collection of the documents.
 
 == Language
 
@@ -36,7 +39,7 @@ not enough that the text is proper English. It has to be simple.
 
 It still has to be defined. Ideas are welcome. Perhaps the documents should contain their document version
 themselves and there has to be a git tag for finalized versions. I envision semantic versioning but the original
-levels as Majos, minor, patch should have different meaning. After all these are documents with content and
+levels as Major, minor, patch should have different meaning. After all, these are documents with content and
 not libraries with APIs.
 
 == Existing Documents
@@ -64,4 +67,4 @@ You can and are encouraged to comment on pull requests and issues.
 All communication and documentation work MUST follow the guidelines outlines in the document
 link:CODE_OF_CONDUCT.adoc[Code of Conduct].
 
-This project will never be in final state. It will ever be in progress or abandoned, deprecated and dead.
+This project will never be in final state. It will ever be either in progress or abandoned, deprecated and dead.
