@@ -25,11 +25,6 @@ the placeholder from normal text. For example a document may contain an organiza
 will contain `{{company}}`. When Acme corp. implements the document as their own they can easily replace the
 strings `{{company}}` with Acme corp.
 
-Later we may create a `pom.xml` to execute Jamal to automate that replacement process. The use of the `{{` and `}}`
-separated placeholders is not Jamal specific and there can be many other tools to be used for the resolution
-of the placeholders to the actual value. This is not a tool-lock-in. It just happens that Jamal was developed
-by the same developer who has started this collection of the documents.
-
 == Language
 
 The language of the documents is English. The majority of the developers is not native English thus it is
