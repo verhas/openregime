@@ -1,6 +1,8 @@
 = Open Documents
 :version:1.0.0-SNAPSHOT
 
+image::https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg[CODE_OF_CONDUCT.adoc]
+
 This repository contains documents that can be used freely and openly in software development
 projects. These documents can be like
 
@@ -36,6 +38,9 @@ It still has to be defined. Ideas are welcome. Perhaps the documents should cont
 themselves and there has to be a git tag for finalized versions. I envision semantic versioning but the original
 levels as Major, minor, patch should have different meaning. After all, these are documents with content and
 not libraries with APIs.
+
+Also, the tagging in git is not trivial because in git the repository state is tagged,
+the repository has a version and not the individual files.
 
 == Existing Documents
 
