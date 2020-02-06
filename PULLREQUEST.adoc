@@ -1,9 +1,7 @@
 = Guidelines to Create Pull Request
-:version:1.0.1-SNAPSHOT
+:version: 1.0.1-SNAPSHOT
 
-== Version
-
-{version}
+Version: {version}
 
 == License
 
