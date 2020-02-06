@@ -1,6 +1,10 @@
 = Guidelines to Create Pull Request
 :version:1.0.1-SNAPSHOT
 
+== Version
+
+{version}
+
 == License
 
 The license of this document is CC BY 4.0 as defined in
