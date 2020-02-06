@@ -1,6 +1,12 @@
 = Guidelines to Create Pull Request
 :version:1.0.0-SNAPSHOT
 
+== License
+
+The license of this document is CC BY 4.0 as defined in
+
+https://creativecommons.org/licenses/by/4.0/
+
 == Introduction and Document Scope
 Pull requests are modification requests in software development when a developer creates a unit of
 change in the source code and requests that the modifications get incorporated into the "master"
@@ -30,21 +36,42 @@ Basic knowledge and understanding of git is assumed.
 === Process Actors
 
 There are at least two actors in the pull request process. One actor asking the pull and the
-other one merging the change to the "master" source. There can be a third actor commenting the
-pull request. This third actor is not necessarily a separate person, the actor accepting the
-pull request may and usually does also act as commenting actor.
+other one merging the change to the "master" source.
 
-== Abbreviations, sloppy terminology
+The detailed model defines four actors:
 
-* PR - pull request
-* YAGNI - You Aren't Gonna Need it (https://martinfowler.com/bliki/Yagni.html)
-* IDE - Integrated Development Environment, like Eclipse, IntelliJ, NetBeans
-* master code - is the source code in the master branch. This is the code into which the PR code is
+requester:: the actor, who is requesting the change and the merge
+commenter:: actor who makes suggestions, comments on the changed code
+approver:: the actor whoa approves the change
+merger:: the actor who performs the merging
+
+image::images/pullrequest/actors.png[]
+
+Most of the actual executions of the PR handling can be described using this model
+assigning one or more acting roles to the individual participants. The *requester* should
+eventually a different person, but one or more of the roles *commenter*, *approver* and *merger*
+may be assigned to a single person. The same time there can be more than one person for each of these
+roles, although the actual merging of a single pull request is going to be executed by a single person.
+
+A more detailed description of how the different roles can be assigned to different personnel
+and what assignment structures may work
+can be part of a document that describes the actual procedure of PR handling. This document does
+not cover that specific topic.
+
+== Definitions
+
+PR:: pull request
+
+IDE:: Integrated Development Environment, like Eclipse, IntelliJ, NetBeans
+
+PR code::
+is the code that the developer created in its own branch and that is to be merged in the pull
+request process
+
+master code:: is the source code in the master branch. This is the code into which the PR code is
   merged into
-* PR code - is the code that the developer created in its own branch and that is to be merged in
-  the pull request process
 
-== Pull Request Guidelines
+== Guidelines
 
 === Scope of a Pull Request
 
@@ -57,6 +84,8 @@ incorporation into the main branch (usually `master`) should utilize multiple PR
 
 It may happen that two changes share some common code change parts. In that case, there are
 two different approaches:
+
+image::images/pullrequest/dependencies.png[]
 
 . Order the changes and the first change contains the common part of the two changes. In this
 case the second change depends on the first one. It is to use in case the changes alone are
@@ -83,6 +112,8 @@ change implementation then the modification of the loop can be part of the same 
 code cleanup of a code that is changed. If the for loop is not altered in any way and there is
 code change only before and/or after the loop then the change of the loop may not be a good decision.
 
+image::images/pullrequest/cleanup-yes-no.png[]
+
 If there is a doubt to change the code in the same pull request then it is a safe choice not to
 include the change into the specific pull request.
 
@@ -94,6 +125,9 @@ cleanup is important and it deserves it's own separate pull request.
 ====
 Import Optimization is code cleanup and thus should be in a separate pull request.
 ====
+
+This section makes sense only for languages that have the notion of `import` in the
+source code.
 
 Import optimization is the act of one or more of the following actions:
 
@@ -152,7 +186,7 @@ To avoid that situation (*formatting recommendations*)
 
  * it is recommended to have well defined formatting rules defining the use of tab character
    and space character for formatting
- * placement of opening and closing braces,
+ * placement of opening and closing braces (if the language uses those),
  * needed spaces between specific tokens (e.g. betweem `if(...)` and the `{` character)
  * tool has to enforce the formatting and automatically signal the PR as build broken if the
    formatting is not matching the rules,
@@ -160,13 +194,13 @@ To avoid that situation (*formatting recommendations*)
    accepted and used for the development.
 
 If the local formatting is not the same as the project global formatting (1) and non-modified
-lines are reformatted then the developer creating the PR should undo these formattings for the PR.
+lines are reformatted then the developer creating the PR should undo these formatting changes for the PR.
 
 If the master code is not well formatted (2) and non-modified
-lines are reformatted then the developer creating the PR should undo these formattings for the PR AND
-should create a separate PR only to correct the formatting.
+lines are reformatted then the developer creating the PR should undo these formatting changes for the PR AND
+may create a separate PR only to correct the formatting.
 
-When the formatting changes cause significant problem during the PR handlign it is recommended to
+When the formatting changes cause significant problem during the PR handling it is recommended to
 introduce the formatting recommendations (itemized above), reformat the code of the whole project
 to be coherent with the formatting rules and merge this change into the master in one PR that contains
 no other change.
