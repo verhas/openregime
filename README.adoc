@@ -21,7 +21,7 @@ https://creativecommons.org/licenses/by/4.0/
 
 == Documents Licenses
 
-The individual documents _should_ define their own licenses. The recommended license is
+The individual documents _should_ define their own licenses.
 
 The recommended license of the documents are usually CC BY 4.0 as defined in
 
