@@ -107,21 +107,17 @@ Code Cleanup should be in a separate pull request.
 ====
 
 When developing a new feature, it is sometimes tempting to modify code to improve the overall
-general structure of the code. These changes should be limited. For example you may need to modify
-a method to implement a change and there is a `for` loop that you can alter to be the more modern
-for-each style or even to use Java 8 streams. In case the code inside the loop is modified for the
-change implementation then the modification of the loop can be part of the same change. It is a
-code cleanup of a code that is changed. If the for loop is not altered in any way and there is
-code change only before and/or after the loop then the change of the loop may not be a good decision.
+general structure of the code. These changes should be limited. 
+
+For example: you may need to modify a method to implement a change and there is a `for` loop that 
+you can alter to be the more modern for-each style or even to use Java 8 streams. 
+In case the code inside the loop is modified for the change implementation then the modification of 
+the loop can be part of the same change. It is a code cleanup of a code that is changed. If the for 
+loop is not altered in any way and there is code change only before and/or after the loop then the 
+change of the loop may not be a good decision.
 
 image::images/pullrequest/cleanup-yes-no.png[]
-
-For example: you may need to modify a method to implement a change and there is a `for` loop that
-you can alter to be the more modern for-each style or even to use Java 8 streams.
-If the code inside the loop has to be changed because it's needed for the implementation of the new feature, then the modification of
-the loop can be part of the same change. This is code cleanup of code that changed. If the for
-loop does not have to be altered in any way and there is code change only before and/or after the loop then the
-change of the loop may not be a good decision.
+^Cleaning^ ^up^ ^code^ ^that^ ^changes:^ ^OK,^ ^cleaning^ ^up^ ^and^ ^changing^ ^code:^ ^Not^ ^OK^
 
 If there is any doubt about changing the code in the same pull request then it is a safe choice not to
 include the change into the specific pull request.
