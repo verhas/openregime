@@ -35,7 +35,11 @@ PR:: pull request
 
 === Process Actors
 
-The code review process has two actors. One actor asking for the review (requester), another one performing the review (reviewer).
+The code review process has two actors. 
+
+requester:: the person asking for the review
+reviewer:: the person performing the review
+
 When talking about code review in the context of a PR, it is often a mandatory part of the approval workflow,
 however that is out of scope for this document.
 
