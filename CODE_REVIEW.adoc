@@ -1,0 +1,42 @@
+= Guidelines to Reviewing Code 
+:version: 1.0.0-SNAPSHOT
+
+Version: {version}
+
+== License
+
+The license of this document is CC BY 4.0 as defined in
+
+https://creativecommons.org/licenses/by/4.0/
+
+== Introduction and Document Scope
+
+Code review is a quality assurance process in software development, when a person (or multiple) examines a piece of code
+(usually as part of a https://github.com/verhas/openregime/blob/master/PULLREQUEST.adoc[pull request]) 
+to determine its quality. At least one of the persons reviewing the code must not be involved with creating the code under review.
+
+**Important**: This document discusses code review specifically as part of the pull request workflow and assumes 
+that you have already read the  https://github.com/verhas/openregime/blob/master/PULLREQUEST.adoc[Guidelines to Create Pull Request] 
+document. If you want to use this document only, you might wish to add some elements from that one for clarity. 
+
+=== Notes
+
+These guidelines are mainly programming language agnostic. In case there is a guideline that is
+language specific then it is denoted in the section title between parentheses, e.g.: (Java).
+
+The guidelines are independent of the tool that is used. However, the guidelines are expressed
+in a way that assume the use of git and GitHub. This is because most of the application of the
+guides will use this tool. Nevertheless the guides are general and can be adapted to other tools.
+Basic knowledge and understanding of git is assumed.
+
+=== Definitions
+
+PR:: pull request
+
+=== Process Actors
+
+The code review process has two actors. One actor asking for the review (requester), another one performing the review (reviewer).
+When talking about code review in the context of a PR, it is often a mandatory part of the approval workflow,
+however that is out of scope for this document.
+
+== Guidelines
