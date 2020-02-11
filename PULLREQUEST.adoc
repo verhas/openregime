@@ -107,7 +107,7 @@ Code Cleanup should be in a separate pull request.
 ====
 
 When developing a new feature, it is sometimes tempting to modify code to improve the overall
-general structure of the code. These changes should be limited. 
+general structure of the code. These changes should be moved to a separate PR if possible.
 
 For example: you may need to modify a method to implement a change and there is a `for` loop that 
 you can alter to be the more modern for-each style or even to use Java 8 streams. 
@@ -117,7 +117,7 @@ loop is not altered in any way and there is code change only before and/or after
 change of the loop may not be a good decision.
 
 image::images/pullrequest/cleanup-yes-no.png[]
-^Cleaning^ ^up^ ^code^ ^that^ ^changes:^ ^OK,^ ^cleaning^ ^up^ ^and^ ^changing^ ^code:^ ^Not^ ^OK^
+^Cleaning^ ^up^ ^code^ ^that^ ^changes:^ ^OK,^ ^cleaning^ ^up^ ^where^ ^code^ ^does^ ^not^ ^change:^ ^Not^ ^OK^
 
 If there is any doubt about changing the code in the same pull request then it is a safe choice not to
 include the change into the specific pull request.
