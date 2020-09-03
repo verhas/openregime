@@ -96,3 +96,10 @@ All communication and documentation work MUST follow the guidelines outlines in 
 This project will never be in final state.
 It will ever be either in progress or abandoned, deprecated and dead.
 This is how projects are and more generally, life is.
+
+== Documents
+
+There are documents in this project sppace that are not document templates. These are
+
+* this `README.adoc`
+* `CODE_OF_CONDUCT.adoc`

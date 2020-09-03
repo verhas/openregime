@@ -1,6 +1,9 @@
 = Contributor Covenant Code of Conduct
 
-This is the standard text, however, this is not only a placeholder. We mean it.
+This is the standard text, however, this is not only a placeholder.
+We mean it.
+This document is not a template.
+This is the documentation of the project itself.
 
 == Our Pledge
 
