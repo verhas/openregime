@@ -3,10 +3,9 @@
 
 image::https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg[CODE_OF_CONDUCT.adoc]
 
-This repository contains documents that can be used freely and openly in software development
-projects. These documents are mainly guidelines, recommendations and can be used as local
-recommendations, regulations or just as samples. The documents can be applied as whole or as a derivative
-document controlled by the document license (see below).
+This repository contains documents that can be used freely and openly in software development projects.
+These documents are mainly guidelines, recommendations and can be used as local recommendations, regulations or just as samples.
+The documents can be applied as whole or as a derivative document controlled by the document license (see below).
 
 The documents are like
 
@@ -27,74 +26,73 @@ The recommended license of the documents are usually CC BY 4.0 as defined in
 
 https://creativecommons.org/licenses/by/4.0/
 
-NOTE: The rationale behind requiring that the individual documents define the license themselves is that
-the documents may be copied, moved and they may lose the link to the original source. At the same time
-the license information is important and should be unambiguous.
+NOTE: The rationale behind requiring that the individual documents define the license themselves is that the documents may be copied or moved.
+That way, they may lose the link to the original source.
+At the same time the license information is important and should be unambiguous.
 
 == Format of the Documents
 
-For shorter documents we can use Markdown. For longer documents the suggested format is Asciidoc. Asciidoc
-is usually preferred over Markdown.
+For shorter documents we can use Markdown.
+For longer documents the suggested format is Asciidoc.
+Asciidoc is usually preferred over Markdown.
 
 == Templating
 
-Some document may contain placeholders. The reason for such placeholders is to ease the modification of the
-document for a specific use. For example the document is a regulation that companies can use for their
-daily working. In that case the original document can contain some made up name. Another approach is that the
-document contains a placeholder in the place of the made up name. That way it is easier and less error prone
-to process the document and replace all occurrence of the placeholder to the specific organization or
-company name.
+Some document may contain placeholders.
+The reason for such placeholders is to ease the modification of the document for a specific use.
+For example the document is a regulation companies can use for their daily working.
+In that case the original document can contain some made up name. Another approach is that the document contains a placeholder in the place of the made up name.
+That way it is easier and less error prone to process the document and replace all occurrence of the placeholder to the specific organization or company name.
 
 ====
 The suggested format is to use `{{` and `}}` separating the placeholder from normal text.
 ====
 
-TIP: As an example, a document may contain an organization name. Then the text
-will contain `{{company}}`. When _Acme corp._ implements the document as their
-own they can easily replace the strings `{{company}}` with _Acme corp_.
+TIP: As an example, a document may contain an organization name. Then the text will contain `{{company}}`.
+When _Acme corp._ implements the document as their own they can easily replace the strings `{{company}}` with _Acme corp_.
 
 == Language
 
-The language of the documents is English. The majority of the developers is not native English thus it is
-not enough that the text is proper English. It has to be simple.
+The language of the documents is English.
+The majority of the developers is not native English thus it is not enough the text is proper English.
+It has to be simple.
 
 == Document Versioning
 
-It still has to be defined. Ideas are welcome. Perhaps the documents should contain their document version
-themselves and there has to be a git tag for finalized versions. I envision semantic versioning
-but the original levels as Major, minor, patch should have different meaning. After all, these are
-documents with content and not libraries with APIs.
+It still has to be defined.
+Ideas are welcome.
+Perhaps the documents should contain their document version themselves and there has to be a git tag for finalized versions.
+I envision semantic versioning but the original levels as Major, minor, patch should have different meaning.
+After all, these are documents with content and not libraries with APIs.
 
-Also, the tagging in git is not trivial because in git the repository state is tagged,
-the repository has a version and not the individual files.
+Also, the tagging in git is not trivial because in git the repository state is tagged, the repository has a version and not the individual files.
 
 == Existing Documents
 
-If there is a contemporary and continuously maintained document on the net with the same or similar
-license about a certain topic, then there is no reason to duplicate the work. In such case we may
-have a document that describes the available other resources with recommendations.
+If there is a contemporary and continuously maintained document on the net with the same or similar license about a certain topic, then there is no reason to duplicate the work.
+In such case we may have a document that describes the available other resources with recommendations.
 
-For example the JPL Java coding standard is an outstanding document available at
-http://lars-lab.jpl.nasa.gov/jpl-java-standard.pdf and it should not be created again, even though it
-currently seems to be outdated.
+For example the JPL Java coding standard is an outstanding document available at http://lars-lab.jpl.nasa.gov/jpl-java-standard.pdf and it should not be created again.
+Even though it currently seems to be outdated.
 
 == Participation and Governance
 
-As I start this project I do not imagine that as a one man show. I will try to create meaningful documents
-as a starting point but anyone is welcome to participate.
+As I start this project I do not imagine that as a one man show.
+I will try to create meaningful documents as a starting point but anyone is welcome to participate.
 
 You can and are encouraged to
 
 * fork the repository, make corrections, additions and create a pull request,
 
-* create issues and comment issues. Issues can cover topic related to the whole
-  project, project governance, or a specific document. You are welcome to ask and
-  answer questions in issues. You are welcome to express your opinion in issues,
+* create issues and comment issues.
+  Issues can cover topic related to the whole project, project governance, or a specific document.
+  You are welcome to ask and answer questions in issues.
+  You are welcome to express your opinion in issues,
 
 * comment on pull requests and issues.
 
-All communication and documentation work MUST follow the guidelines outlines in the document
-link:CODE_OF_CONDUCT.adoc[Code of Conduct].
+All communication and documentation work MUST follow the guidelines outlines in the document link:CODE_OF_CONDUCT.adoc[Code of Conduct].
 
-This project will never be in final state. It will ever be either in progress or abandoned,
-deprecated and dead. But this is how projects are and more generally, life is.
+This project will never be in final state.
+It will ever be either in progress or abandoned, deprecated and dead.
+This is how projects are and more generally, life is.

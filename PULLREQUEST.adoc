@@ -106,24 +106,20 @@ which change is going to be reviewed first. That way `F1` and `F2` do not block 
 Code Cleanup should be in a separate pull request.
 ====
 
-When developing a new feature, it is sometimes tempting to modify code to improve the overall
-general structure of the code. These changes should be moved to a separate PR if possible.
+When developing a new feature, it is sometimes tempting to modify code to improve the overall general structure of the code.
+These changes should be moved to a separate PR if possible.
 
-For example: you may need to modify a method to implement a change and there is a `for` loop that 
-you can alter to be the more modern for-each style or even to use Java 8 streams. 
-In case the code inside the loop is modified for the change implementation then the modification of 
-the loop can be part of the same change. It is a code cleanup of a code that is changed. If the for 
-loop is not altered in any way and there is code change only before and/or after the loop then the 
-change of the loop may not be a good decision.
+For example: you may need to modify a method to implement a change and there is a `for` loop that you can alter to be the more modern for-each style or even to use Java 8 streams.
+In case the code inside the loop is modified for the change implementation then the modification of the loop can be part of the same change.
+It is a code cleanup of a code that is changed.
+If the for loop is not altered in any way and there is code change only before and/or after the loop then the change of the loop may not be a good decision.
 
 image::images/pullrequest/cleanup-yes-no.png[]
 ^Cleaning^ ^up^ ^code^ ^that^ ^changes:^ ^OK,^ ^cleaning^ ^up^ ^where^ ^code^ ^does^ ^not^ ^change:^ ^Not^ ^OK^
 
-If there is any doubt about changing the code in the same pull request then it is a safe choice not to
-include the change into the specific pull request.
+If there is any doubt about changing the code in the same pull request then it is a safe choice not to include the change into the specific pull request.
 
-This recommendation does not mean that code cleanup should not be done. On the contrary: Code
-cleanup is important and it deserves its own separate pull request.
+This recommendation does not mean that code cleanup should not be done. On the contrary: Code cleanup is important, and it deserves its own separate pull request.
 
 === Import Optimization
 
@@ -131,45 +127,39 @@ cleanup is important and it deserves its own separate pull request.
 Import Optimization is code cleanup and thus should be in a separate pull request.
 ====
 
-This section makes sense only for languages that have the notion of `import` in the
-source code.
+This section makes sense only for languages that have the notion of `import` in the source code.
 
 Import optimization is the act of one or more of the following actions:
 
-* removing import statements that are not needed any more
+* removing import statements that are not needed anymore
 * rearrange the order of import statements (including grouping)
-* change wild-card import statements into explicit import statements or
-  the other way around according to local policies.
+* change wild-card import statements into explicit import statements or the other way around according to local policies.
 
-Import optimizations are usually performed automatically by the IDE when the code is formatted,
-saved. When the master code has different optimization rules (ordering, grouping) the import
-optimization creates extra differences in the PR that have no functional relevance.
+Import optimizations are usually performed automatically by the IDE when the code is formatted, saved.
+When the master code has different optimization rules (ordering, grouping) the import optimization creates extra differences in the PR that have no functional relevance.
 
-It may also happen many times that import statements in the checked in code are superfluous and
-not coherent with the local policies. It is advised to enforce the local development
-bylaws using static code analysis if possible to avoid such a situation.
+It may also happen many times that import statements in the checked in code are superfluous and not coherent with the local policies.
+It is advised to enforce the local development bylaws using static code analysis if possible to avoid such a situation.
 
 PRs must avoid import optimizations that are not related to the actual change.
 
-When a change eliminates the use of a class or method that was available through the use of
-an import statement then the removal of the import statement induced by that change should
-eventually be part of the PR.
+A change may eliminates the use of a class or method that was available through the use of an import statement.
+In that case the removal of the import statement should eventually be part of the PR.
 
-(Java) The opposite situation, when a change makes it necessary to import a class or method
-(static import) then the PR should  eventually contain the change of the `import` statements.
-The fact that the PR should contain the new `import` statement(s) is obvious: without the new
-statements the code in the PR does not compile.
+(Java) The opposite situation is when a change makes it necessary to import a class or method (static import).
+The PR should eventually contain the change of the `import` statements in that case.
+The fact that the PR should contain the new `import` statement(s) is obvious.
+Without that the code in the PR would not compile.
 
-(Java) When the change in the code uses some method static imported then the new static import should
-eventually be part of the PR. If the code uses some previously statically imported methods, but
-the PR code uses the method with the full name, including the class name and it makes possible to
-delete the static import then this change should be part of the PR. The deletion of the static import
-statement is the consequence of the code change and that way this case is equivalent with the one
-when a class is not used any more and thus not imported any more.
+(Java) When the change in the code uses some method static imported then the new static import should eventually be part of the PR.
+The other way around is, when the code uses some previously statically imported methods, but the PR code uses the method with the full name.
+In this case, as the code uses the class name, it is possible to delete the static import.
+The deletion of such static import should be part of the PR.
+The deletion of the static import statement is the consequence of the code change.
+That way this case is equivalent with the one when a class is not used anymore and thus it is not imported anymore.
 
-In other cases the optimization of the import statements should not be part of the PR, rather
-a separate PR should be created that contains nothing but import optimization and possibly
-other code cleanup.
+In other cases the optimization of the import statements should not be part of the PR.
+A separate PR should be created that contains nothing but import optimization and possibly other code cleanup.
 
 === Formatting Change
 
@@ -177,35 +167,35 @@ other code cleanup.
 Formatting change is cleanup and thus should be in a separate pull request.
 ====
 
-It is very easy to modify the formatting of the code. When the PR contains a lot of formatting
-change then the actual code change may easily be overseen in the numerous formatting change. This is
-something to avoid.
+It is very easy to modify the formatting of the code.
+When the PR contains a lot of formatting change then the actual code change may easily be overseen in the numerous formatting change.
+This is something to avoid.
 
-If (1) the local formatting (very specifically the developers IDE formatting setting) is the same as the
-project setting and (2) the master code is well formatted then the PR request will not contains any
-reformatted line that is not new, deleted or changed. Formatting clutter in the PR is only possible
-when either there is a different setting in the developer IDE and/or the master code is not
-formatted properly.
+If (1) the local formatting (very specifically the developers IDE formatting setting) is the same as the project setting,
+and (2) the master code is well formatted then the PR request will not contain any reformatted line that is not new, deleted or changed.
+Formatting clutter in the PR is only possible in two cases:
+
+* when there is a different setting in the developer IDE and/or
+* the master code is not formatted properly.
 
 To avoid that situation (*formatting recommendations*)
 
- * it is recommended to have well defined formatting rules defining the use of tab character
-   and space character for formatting
+ * it is recommended to have well-defined formatting rules defining the use of tab character and space character for formatting
  * placement of opening and closing braces (if the language uses those),
  * needed spaces between specific tokens (e.g. betweem `if(...)` and the `{` character)
- * tool has to enforce the formatting and automatically signal the PR as build broken if the
-   formatting is not matching the rules,
- * developers are provided with formatting configuration for the different IDEs that are
-   accepted and used for the development.
+ * tool has to enforce the formatting and automatically signal the PR as build broken if the formatting is not matching the rules,
+ * developers are provided with formatting configuration for the different IDEs that are accepted and used for the development.
 
-If the local formatting is not the same as the project global formatting (1) and non-modified
-lines are reformatted then the developer creating the PR should undo these formatting changes for the PR.
+It is the duty of the PR requester to undo the formatting changes that are not supposed to be in the PR (1) in the first place.
 
-If the master code is not well formatted (2) and non-modified
-lines are reformatted then the developer creating the PR should undo these formatting changes for the PR AND
-may create a separate PR only to correct the formatting.
+If the reformatting is needed because the master code is not well formatted (2) then two separate PRs should be created.
+One for the changes and one for the reformatting.
+These changes depend on each other.
+The actual order should reflect the urgency and importance of the changes.
+Usually formatting has lower priority than other changes.
 
-When the formatting changes cause significant problem during the PR handling it is recommended to
-introduce the formatting recommendations (itemized above), reformat the code of the whole project
-to be coherent with the formatting rules and merge this change into the master in one PR that contains
-no other change.
+When the formatting changes cause a significant problem during the PR handling it is recommended to
+
+* introduce the formatting recommendations (itemized above),
+* reformat the code of the whole project to be coherent with the formatting rules, and
+* merge this change into the master in one PR that contains no other change.

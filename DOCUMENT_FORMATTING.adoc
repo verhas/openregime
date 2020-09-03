@@ -1,0 +1,76 @@
+= Document Formatting
+
+This document describes formatting recommendations for textual documents.
+It is applicable for document formats that are edited in a textual format, like Markdown, and Asciidoc.
+The formatting recommendations are pertaining the textual source of the documentation and not the final formatted output.
+The aim to have a formatting guideline for the documentation source is to ease the writing and the maintenance of the documentation.
+
+The guideline is based on mainly the ASCIIDOC "One Sentence Per Line" recommendation, but it does not stop there.
+This document includes more specific recommendations.
+The recommendations can be altered, tunes according to the local needs where this document is used as a regime.
+
+== License
+
+The license of this document is CC BY 4.0 as defined in
+
+https://creativecommons.org/licenses/by/4.0/
+
+== One Sentence Per Line
+
+NOTE: The following section is taken verbatim from the ASCIIDOC
+https://asciidoctor.org/docs/asciidoc-recommended-practices/["Recommended practices"]
+documentation.
+
+Don’t wrap text at a fixed column width. Instead, put each sentence on its own line, a technique called sentence per line. This technique is similar to how you write and organize source code. The result can be spectacular.
+
+Here are some of the advantages of using the sentence per line style:
+
+* It prevents reflows (meaning a change early in the paragraph won’t cause the remaining lines in the paragraph to reposition).
+* You can easily swap sentences.
+* You can easily separate or join paragraphs.
+* You can comment out sentences or add commentary to them.
+* You can spot sentences which are too long or sentences that vary widely in length.
+* You can spot redundant (and thus mundane) patterns in your writing.
+
+We picked up this idea from the writing guide in the Neo4j documentation.
+However, it seems like the idea dates back a discovery by Buckminster Fuller in the 1930s, who called it ventilated prose.
+The technique was also recommended in 2009 by Brandon Rhodes in a blog post about Semantic Linefeeds.
+
+It’s important to note that this technique works because AsciiDoc doesn’t treat wrapped lines in prose as hard line breaks.
+At least, it doesn’t show up that way to the reader.
+The line breaks between contiguous lines of prose will not be visible in the rendered document (i.e., as the reader sees it).
+
+== Long sentences
+
+Although the "One Sentence Per Line" encourages short sentences, there are situations when it is not possible or desirable.
+Some listing of items that you do not want itemized in the output may make a sentence very long.
+Legal sentences are like that typically.
+In such situation, it is advised to break the listing into separate lines.
+That results a "One Sentence Per Multiple Lines" exception from the original concept.
+When the listing joins consecutive elements using the word "and", or "or" then the connecting word has to be on the end of a line.
+In rare cases, typically in legal texts, there can be multiple enumerations.
+In this case a formatting language specific comment should be used to separate the listings.
+An example is the text in the code of conduct document:
+
+----
+Project maintainers have the right and responsibility to
+// DO:
+remove,
+edit, or
+reject
+// WHAT:
+comments,
+commits,
+code,
+wiki edits,
+issues, and
+other contributions
+//
+that are not aligned to this Code of Conduct, ...  that they deem
+//
+inappropriate,
+threatening,
+offensive, or
+harmful.
+----
+
