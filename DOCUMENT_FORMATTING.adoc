@@ -1,4 +1,5 @@
 = Document Formatting
+:version:1.0.0-SNAPSHOT
 
 This document describes formatting recommendations for textual documents.
 It is applicable for document formats that are edited in a textual format, like Markdown, and Asciidoc.
