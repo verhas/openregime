@@ -4,6 +4,8 @@ This is the standard text, however, this is not only a placeholder.
 We mean it.
 This document is not a template.
 This is the documentation of the project itself.
+The source is reformatted from the standard GitHub Code of Conduct document to follow the link:DOCUMENT_FORMATTING.adoc[Document Formatting] recommendation.
+(One sentence per line.)
 
 == Our Pledge
 

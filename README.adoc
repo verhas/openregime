@@ -99,7 +99,10 @@ This is how projects are and more generally, life is.
 
 == Documents
 
-There are documents in this project sppace that are not document templates. These are
+There are documents in this project space, which are not document templates.
+These are
 
 * this `README.adoc`
 * `CODE_OF_CONDUCT.adoc`
+
+Every other document is part of the open document set.
