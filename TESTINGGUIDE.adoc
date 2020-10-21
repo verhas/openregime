@@ -1,0 +1,259 @@
+= Guidelines to Follow in Unit Tests
+:version: 1.0.0-SNAPSHOT
+
+Version: {version}
+
+== License
+
+The license of this document is CC BY 4.0 as defined in
+
+https://creativecommons.org/licenses/by/4.0/
+
+== Introduction and Document Scope
+
+This document aims to describe the conventions for writing unit tests.
+This is a very opinionated document.
+It was created from an actual project document.
+The fact that this document is opinionated implies that there is a good chance that this document will not fit a specific need as it is.
+Even if the document does not fit as is, it can be a good starting point to create a similarly scoped local document.
+We also tried to cover all the possible aspects that are related to unit test development.
+It is very likely that there are cases, which are not covered.
+This document contains not only the definitions but also reasons why we selected a specific convention or approach.
+
+=== Contribution
+
+We are open for suggestion of areas not covered.
+If there is any flaw in the reasoning, we are open to suggestions to amend.
+
+== Dependencies/frameworks used
+
+NOTE: This section lists the different frameworks that are used in the project.
+A project usually should define the list of the frameworks used.
+There are many frameworks.
+Many of those have competing and overlapping functionality.
+The more frameworks are used the longer it takes for new members to ramp-up on the project learning the frameworks.
+It is usually better to select only one from the competing frameworks.
+The advantage is lower maintenance cost.
+The disadvantage is that the project cannot utilize the unique features of the not selected framework.
+Since the frameworks heavily compete these unique features found only in one framework are usually small and diminishing.
+
+For our unit tests, we use
+
+* https://junit.org/junit5/docs/current/user-guide/[JUnit 5] - testing framework
+* https://site.mockito.org/[Mockito] - for mocking dependencies of units
+* https://assertj.github.io/doc/[AssertJ] - for fluent assertions
+
+To define how a certain mock behaves, we use
+https://javadoc.io/static/org.mockito/mockito-core/3.3.3/org/mockito/BDDMockito.html[BDDMockito].
+
+== Test method names
+
+Test method names are not the primary means of describing expected behavior.
+We use <<display-names,Display names>> for that.
+While this makes method naming less restrictive, there are still a few rules to follow.
+
+Test method names should:
+* be short and unique (within their scope)
+* be meaningful
+* be in `camelCase`
+* not parrot the `@DisplayName`
+* contain only alphabetical characters (a-z, A-Z)
+* may contain numbers occasionally, but
+* not be numbered, like `test1`, `test2` and so on
+* start with the string`test` to visually separate from other methods in the test class
+
+Example of a good method name:
+
+[source,java]
+----
+public void testFright()
+
+----
+
+Example of bad method names:
+
+[source,java]
+----
+// too long contains underscore, possibly parroting
+public void shouldThrowException_whenEncounteringFrighteningGhost()
+
+// contains a number not related to test
+public void test1()
+
+// not in camelCase
+public void test_frightening_ghost()
+
+----
+
+Avoiding sequence numbers in names (e.g.: `test1()`, `test2()`) makes it easier to insert new tests, delete old tests or rearrange tests.
+Having short method names makes writing tests simpler and reduces duplication, noise in the tests.
+
+== Display names
+
+We use JUnit 5's https://junit.org/junit5/docs/current/user-guide/#writing-tests-display-names[`@DisplayName`] annotation.
+We use it for three purposes:
+
+* to describe the tested behavior
+* to group similar tests with a descriptive name (see <<structuring-tests,Structuring tests>>)
+* to describe the system under test
+
+The `@DisplayName` should use imperative language instead of hypothetical.
+It is okay to use conditional language to specify conditions necessary for the test.
+Avoid unnecessary words like "should", "when", "if".
+These often add noise.
+When used properly, the `@DisplayName` should document the behaviors of the system under test.
+
+Example of proper usage of `@DisplayName`
+
+[source,java]
+----
+@DisplayName("GhostHunter")
+public class GhostHunterTests {
+
+    @Nested
+    @DisplayName("hunting ghosts")
+    class HuntingTests {
+
+        @Test
+        @DisplayName("throws an exception when encountering a frightening ghost")
+        void testFright() { ... }
+
+        @Test
+        @DisplayName("hunts down normal ghosts")
+        void testHunting() { ... }
+    }
+
+    @Test
+    @DisplayName("creates report about ghost hunt")
+    void testReport() { ... }
+}
+----
+
+These tests effectively define what the `GhostHunter` class does.
+
+Example of the wrong usage of `@DisplayName`:
+
+[source,java]
+----
+public class GhostHunterTests {
+
+    // missing DisplayName
+    @Test
+    void testFright() { ... }
+
+    // noisy DisplayName
+    @Test
+    @DisplayName("should throw an exception when encountering a frightening ghost")
+    void testFright() { ... }
+}
+----
+
+We use imperative language because we write code that works.
+Not code that _should_ work.
+Our test passes if the code does something and fails if it does not.
+
+== Structuring tests
+
+It often helps readability to put groups of tests into inner classes.
+We annotate inner classes with the https://junit.org/junit5/docs/current/user-guide/#writing-tests-nested[@Nested] annotation and give them a descriptive `@DisplayName`.
+It helps document how the system under test works.
+See the <<display-names,Display names>> section for a good example.
+
+We write three structuring comments inside the tests: `// GIVEN`, `// WHEN`, `// THEN`.
+These comments always look the same (including the single space).
+These comments (or how they structure the tests into logical parts) are part of Behaviour Driven Development (BDD).
+The parts denoted by comments should be separated, if possible.
+A test must have zero or one `// GIVEN` and exactly one `// WHEN` and exactly one `// THEN` comment line.
+If the test does not need setup (or all setup is in `@BeforeEach`) `// GIVEN` can be left out.
+
+Example of properly commented tests:
+
+[source,java]
+----
+@Test
+@DisplayName("throws exception when encountering a frightening ghost")
+void testFright() {
+    // GIVEN
+    given(spookOMeter.getLevel(any())).willReturn(10);
+
+    // WHEN
+    assertThatThrownBy(() -> ghostHunter.hunt(new Ghost(Scariness.FRIGHTENING)))
+        // THEN
+        .isInstanceOf(ReallyScaredException.class)
+        .hasMessageContaining("Ghost was too scary!");
+}
+----
+
+In some cases, it is helpful to use blocks `{}` to structure your tests for additional clarity.
+It helps visualize what data the blocks share.
+For example:
+
+[source,java]
+----
+@Test
+@DisplayName("hunts down normal ghosts")
+void testHunting() {
+    Ghost ghost;
+    // GIVEN
+    {
+        given(spookOMeter.getLevel(any())).willReturn(5);
+        ghost =  = new Ghost(Scariness.SCARY);
+    }
+    // WHEN
+    {
+        ghostHunter.hunt(ghost);
+    }
+    // THEN
+    {
+        assertThat(ghost.status()).isEqualTo(GhostStatus.BANISHED);
+    }
+}
+----
+
+We use these structuring comments because they help us stay within the bounds of a single unit test.
+Consider restructuring the test or writing new ones instead of writing a second `// WHEN` block.
+We have found these structures especially helpful for junior developers.
+
+=== Variables
+
+Variable names should:
+* use `camelCase`
+* except for constants (`static final`), which should be `UPPERCASE_WITH_UNDERSCORES`, (Snake case.)
+* follow clean code principles.
+* not use Hungarian notation,
+* have proper names, like `ghostHunter`, or `spookOMeter`.
+
+Do not call "system under test" `sut` or `underTest`, as this makes individual tests harder to read.
+
+Example of good variable names:
+
+[source,java]
+----
+// Having a value as a constant can be useful
+private static final int FRIGHTENING_SCORE = 10;
+
+// Repeating the type in camelCase is usually a safe bet
+private GhostHunter ghostHunter;
+
+// If the naming is unambiguous inside the scope of the test, less is enough
+// For example, if this is the only service the GhostHunter uses
+@Mock
+private GhostScarinessEvaluationService service;
+----
+
+Example of lousy variable names:
+
+[source,java]
+----
+// Makes individual tests harder to read
+private GhostHunter sut;
+
+// Should be in camelCase (not static final)
+private SpookOMeter SPOOK_METER;
+
+// Uses Hungarian notation
+@Mock
+private GhostScarinessEvaluationService mockService;
+----
+
+Local variables in the tests must be declared `final`.

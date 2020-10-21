@@ -1,0 +1,21 @@
+= External Documents and Resources
+:version:1.0.0-SNAPSHOT
+
+This document contains references to external documents and resources, which serve similar purpose as OpenRegime.
+OpenRegime does not want to embrace all possible regimes.
+It aims to fill only the gaps where there are no usable or good quality FOSS documents for the community.
+Therefore, those documents and resources that can be referenced and are not duplicated, forked here are referenced in this file.
+
+== Semantic Versioning
+
+https://semver.org/
+
+Semantic versioning gives guidelines how to maintain the verioning of a library.
+Semantic versioning is a well written standard, available in many translations and it is the de-facto standard for versioning.
+
+
+== JPL Java Coding Standard
+
+For example the JPL Java coding standard is an outstanding document available at http://lars-lab.jpl.nasa.gov/jpl-java-standard.pdf and it should not be created again.
+Even though it currently seems to be outdated.
+This repository contains a copy of the orignal PDF in case the original becomes unreachable.
