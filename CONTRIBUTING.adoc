@@ -1,3 +1,4 @@
 = How to Contribute to OpenRegime
 :version:1.0.0-SNAPSHOT
 
+Just fork, modify, pull request.
